@@ -1,0 +1,1 @@
+# gerenciamento dos dispositivos e observadores
