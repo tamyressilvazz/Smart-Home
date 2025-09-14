@@ -32,5 +32,5 @@ class Persistencia:
 
 #teste
 if __name__ == '__main__':
-    test_config_path = 'data/test_config.json'
+    test_config_path = 'data/config.json'
     persistencia = Persistencia(test_config_path)
