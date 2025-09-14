@@ -1,0 +1,3 @@
+timestamp,id_dispositivo,evento,estado_origem,estado_destino,sucesso,erro
+2025-09-14T00:19:49,luz_sala,ligar,off,on,True,
+2025-09-14T00:19:49,porta_entrada,abrir,destrancada,aberta,False,Porta travada

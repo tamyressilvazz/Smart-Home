@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from transitions import Machine
-from smart_home.core.erros import TransicaoInvalida, ValidacaoAtributo
+from erros import TransicaoInvalida, ValidacaoAtributo
 
 # Enum para tipos de dispositivos
 class TipoDispositivo(Enum):

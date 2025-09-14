@@ -1,7 +1,7 @@
 # Observer (console/arquivo)
 
 from abc import ABC, abstractmethod
-from smart_home.core.eventos import Evento, EventoDispositivo, EventoHub
+from eventos import Evento, EventoDispositivo, EventoHub
 import json
 
 class Observer(ABC):

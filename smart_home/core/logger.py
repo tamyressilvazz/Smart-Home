@@ -43,7 +43,7 @@ class Logger:
 # testes
 if __name__ == '__main__':
     logger1 = Logger('data/test_events.csv')
-    logger2 = Logger('data/test_events.csv') # Deve ser a mesma instância
+    logger2 = Logger('data/test_events.csv')
 
     print(f"Logger 1 is Logger 2: {logger1 is logger2}")
 
