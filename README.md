@@ -6,7 +6,32 @@ Este projeto implementa um Smart Home Hub em Python, capaz de gerenciar diversos
 
 ## Estrutura do Projeto
 
-
+```
+smart_home/
+  README.md
+  requirements.txt
+  data/
+    configuracao.exemplo.json
+    eventos.exemplo.csv
+    relatorio.exemplo.csv
+  smart_home/
+    __init__.py
+    core/
+      cli.py             # implementação da linha de comando
+      hub.py             # gerenciamento dos dispositivos e observadores
+      dispositivos.py    # classe base e enums de tipos de dispositivos
+      eventos.py         # tipos de eventos do hub
+      observers.py       # Observer (console/arquivo)
+      logger.py          # Singleton para logging em CSV
+      persistencia.py    # carregar/salvar configuração em JSON
+      erros.py           # exceções personalizadas
+    dispositivos/       #uma classe específica para cada dispositivo implementado
+      porta.py
+      luz.py
+      tomada.py
+      cafeteira.py
+      # outros de acordo com dispositivos escolhidos
+```
 
 
 ## Requisitos
