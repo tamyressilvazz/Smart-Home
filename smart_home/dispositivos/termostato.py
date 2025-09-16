@@ -1,4 +1,4 @@
-from dispositivos import Dispositivo, TipoDispositivo, ValidarInteiro, ValidarEnum
+from smart_home.core.dispositivos import Dispositivo, TipoDispositivo, ValidarInteiro, ValidarEnum
 from smart_home.core.erros import TransicaoInvalida
 from transitions import Machine
 from enum import Enum

@@ -1,6 +1,6 @@
 
 from transitions import Machine
-from smart_home.core.dispositivos import Dispositivo, ValidarInteiro, TipoDispositivo
+from core import Dispositivo, TipoDispositivo, ValidarInteiro
 from smart_home.core.erros import TransicaoInvalida
 
 

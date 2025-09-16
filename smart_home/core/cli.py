@@ -262,11 +262,11 @@ class CLI:
             else:
                 print("Opcao invalida. Tente novamente.")
 
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Smart Home Hub CLI")
     parser.add_argument('--config', type=str, default='data/configuracao.json',
                         help='Caminho para o arquivo de configuracao JSON.')
     args = parser.parse_args()
 
     cli = CLI(args.config)
-    cli.run()
+    cli.run()"""
