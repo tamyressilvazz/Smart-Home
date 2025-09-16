@@ -5,10 +5,9 @@ from typing import Any, Dict
 
 @dataclass
 class Evento:
-    timestamp: datetime.datetime = field(default_factory=datetime.datetime.now)
     tipo: str
     dados: Dict[str, Any]
-
+    
 @dataclass
 class EventoDispositivo(Evento):
     id_dispositivo: str
@@ -30,6 +29,7 @@ class EventoDispositivo(Evento):
 
 @dataclass
 class EventoHub(Evento):
+    timestamp: datetime.datetime = field(default_factory=datetime.datetime.now)
     # Eventos adicionar/remover dispositivo, executar rotina
     def __post_init__(self):
         pass

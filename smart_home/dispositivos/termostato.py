@@ -1,5 +1,5 @@
 from dispositivos import Dispositivo, TipoDispositivo, ValidarInteiro, ValidarEnum
-from core.erros import TransicaoInvalida
+from smart_home.core.erros import TransicaoInvalida
 from transitions import Machine
 from enum import Enum
 
@@ -31,7 +31,7 @@ class Termostato(Dispositivo):
             {'trigger': 'alternar_modo', 'source': 'aquecimento', 'dest': 'refrigeracao'}
         ]
         self.machine = Machine(model=self, states=states, initial='desativado', transitions=transitions,
-                               after_transition='on_enter_state', before_transition='on_exit_state')
+                               after='on_enter_state', before='on_exit_state')
 
 
     def ativar_refrigeracao(self):

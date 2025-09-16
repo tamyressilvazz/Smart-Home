@@ -20,7 +20,7 @@ class Tomada(Dispositivo):
             {'trigger': 'desligar', 'source': 'on', 'dest': 'off', 'after': 'on_desligar'}
         ]
         self.machine = Machine(model=self, states=estados, initial='off', transitions=transicoes,
-                               after_transition='on_enter_state', before_transition='on_exit_state')
+                               after_='on_enter_state', before='on_exit_state')
         
     def on_ligar(self):
         """Registra o tempo de início quando a tomada é ligada."""

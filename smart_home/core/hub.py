@@ -1,15 +1,16 @@
 from smart_home.core.dispositivos import TipoDispositivo, Dispositivo
-from smart_home.dispositivos import Porta
-from smart_home.dispositivos import Luz
-from smart_home.dispositivos import Tomada
-from smart_home.dispositivos import Termostato
-from smart_home.dispositivos import CaixaSom
-from smart_home.dispositivos import ArCondicionado
+
 from smart_home.core.logger import Logger
 from smart_home.core.eventos import EventoDispositivo, EventoHub
 from smart_home.core.observers import ConsoleObserver, FileObserver
 from smart_home.core.erros import TransicaoInvalida, ValidacaoAtributo, ConfigInvalida
-import datetime
+
+from smart_home.dispositivos import arCondicionado
+from smart_home.dispositivos.caixaSom import CaixaSom
+from smart_home.dispositivos.luz import Luz
+from smart_home.dispositivos.porta import Porta
+from smart_home.dispositivos.termostato import Termostato
+from smart_home.dispositivos.tomada import Tomada
 
 class SmartHomeHub:
     def __init__(self):
@@ -37,7 +38,7 @@ class SmartHomeHub:
         elif tipo == TipoDispositivo.TERMOSTATO:
             device = Termostato(dev_id, nome)
         elif tipo == TipoDispositivo.AR_CONDICIONADO:
-            device = ArCondicionado(dev_id, nome)
+            device = arCondicionado(dev_id, nome)
         elif tipo == TipoDispositivo.CAIXA_SOM:
             device = CaixaSom(dev_id, nome)
         else:

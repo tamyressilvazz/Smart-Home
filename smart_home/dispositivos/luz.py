@@ -1,7 +1,9 @@
-from smart_home.core.dispositivos import Dispositivo, TipoDispositivo, ValidarInteiro, ValidarEnum
-from smart_home.core.erros import TransicaoInvalida
+
 from transitions import Machine
 from enum import Enum
+
+from smart_home.core.dispositivos import Dispositivo, TipoDispositivo, ValidarEnum, ValidarInteiro
+from smart_home.core.erros import TransicaoInvalida
 
 
 class CorLuz(Enum):
@@ -32,7 +34,7 @@ class Luz(Dispositivo):
             {'trigger': 'definir_cor', 'source': 'on', 'dest': 'on'} # Permanece no estado 'on'
         ]
         self.machine = Machine(model=self, states=estados, initial='off', transitions=transicoes,
-                               after_transition='on_enter_state', before_transition='on_exit_state')
+                               after='on_enter_state', before='on_exit_state')
     
     # Métodos ligar/desligar/definir_brilho
     def ligar(self):

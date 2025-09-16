@@ -1,6 +1,7 @@
+
 from smart_home.core.dispositivos import Dispositivo, TipoDispositivo
-from smart_home.core.erros import TransicaoInvalida
 from transitions import Machine
+from smart_home.core.erros import TransicaoInvalida
 
 #Porta herda de dispostivo
 class Porta(Dispositivo):
@@ -20,7 +21,7 @@ class Porta(Dispositivo):
         ]
 
         self.machine = Machine(model=self, states=estados, initial='trancada', transitions=transitions,
-                               after_transition='on_enter_state', before_transition='on_exit_state')
+                               after='on_enter_state', before='on_exit_state')
         
     def check_if_closed(self):
         """Verifica se a porta está fechada antes de trancar."""

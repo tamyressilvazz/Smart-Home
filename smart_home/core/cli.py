@@ -2,7 +2,7 @@ import argparse
 from hub import SmartHomeHub
 from persistencia import Persistencia
 from erros import TransicaoInvalida, ValidacaoAtributo, ConfigInvalida
-from dispositivos import TipoDispositivo
+from smart_home.core.dispositivos import TipoDispositivo, Dispositivo
 
 class CLI:
     def __init__(self, config_path):
@@ -199,7 +199,6 @@ class CLI:
         elif tipo == TipoDispositivo.TOMADA:
             potencia_str = input("potencia_w (int >= 0): ").strip()
             atributos['potencia_w'] = int(potencia_str) if potencia_str else 0
-        # Adicione lógica para outros tipos de dispositivos aqui
 
         try:
             self.hub.adicionar_dispositivo(dev_id, tipo, nome, atributos)

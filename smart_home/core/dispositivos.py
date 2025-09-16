@@ -1,9 +1,8 @@
-# classe base e enums de tipos de dispositivos
 
 from abc import ABC, abstractmethod
 from enum import Enum
-#from transitions import Machine
-from erros import ValidacaoAtributo
+from transitions import Machine
+from smart_home.core.erros import ValidacaoAtributo
 
 # Enum para tipos de dispositivos
 class TipoDispositivo(Enum):

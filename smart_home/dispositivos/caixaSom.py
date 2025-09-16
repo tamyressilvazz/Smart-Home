@@ -1,12 +1,14 @@
-from smart_home.core.dispositivos import Dispositivo, TipoDispositivo, ValidarInteiro
-from smart_home.core.erros import TransicaoInvalida
+
 from transitions import Machine
+from smart_home.core.dispositivos import Dispositivo, ValidarInteiro, TipoDispositivo
+from smart_home.core.erros import TransicaoInvalida
+
 
 class CaixaSom(Dispositivo):
     volume = ValidarInteiro(min_val=0, max_val=100)
 
     def __init__(self, id: str, nome: str):
-        super().__init__(id, nome, TipoDispositivo.CAMERA)  # Corrigir TipoDispositivo abaixo
+        super().__init__(id, nome, TipoDispositivo.CAIXA_SOM)  # Corrigir TipoDispositivo abaixo
         self._volume = 50  # Valor padrão antes da validação
         self._setup_fsm()
         self.volume = 50
@@ -24,7 +26,7 @@ class CaixaSom(Dispositivo):
         self.machine = Machine(model=self, states=states, initial='desligado', transitions=transitions,
                                after_transition='on_enter_state', before_transition='on_exit_state')
 
-    # Métodos de comando
+    # Métodos de comando: ligar/desligar/tocar/parar/...
     def ligar(self):
         try:
             self.machine.ligar()
@@ -74,6 +76,7 @@ class CaixaSom(Dispositivo):
             if self.volume < 0:
                 self.volume = 0
 
+#teste
 if __name__ == '__main__':
     caixa = CaixaSom("caixa_sala", "Caixa de Som da Sala")
     print(f"Estado inicial: {caixa.estado}, Volume: {caixa.volume}")
