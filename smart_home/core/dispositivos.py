@@ -10,9 +10,9 @@ class TipoDispositivo(Enum):
     PORTA = "PORTA"
     LUZ = "LUZ"
     TOMADA = "TOMADA"
-    CAIXA_SOM = "CAIXA DE SOM"
+    CAIXA_SOM = "CAIXA_SOM"
     TERMOSTATO = "TERMOSTATO"
-    AR_CONDICIONADO = "AR CONDICIONADO"
+    AR_CONDICIONADO = "AR_CONDICIONADO"
 
 # Descritor - validação de atributos
 class ValidarInteiro:
