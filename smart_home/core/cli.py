@@ -265,7 +265,7 @@ class CLI:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Smart Home Hub CLI")
-    parser.add_argument('--config', type=str, default='data/configuracao.exemplo.json',
+    parser.add_argument('--config', type=str, default='data/configuracao.json',
                         help='Caminho para o arquivo de configuracao JSON.')
     args = parser.parse_args()
 

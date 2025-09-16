@@ -2,8 +2,8 @@
 
 from abc import ABC, abstractmethod
 from enum import Enum
-from transitions import Machine
-from erros import TransicaoInvalida, ValidacaoAtributo
+#from transitions import Machine
+from erros import ValidacaoAtributo
 
 # Enum para tipos de dispositivos
 class TipoDispositivo(Enum):

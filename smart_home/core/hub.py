@@ -160,7 +160,6 @@ class SmartHomeHub:
             elif isinstance(device, Porta):
                 # Porta não tem atributos adicionais para persistir além do estado
                 pass
-            # Adicione a lógica para coletar atributos de outros dispositivos aqui
 
             dispositivos_config.append(dev_data)
 
@@ -197,14 +196,33 @@ class SmartHomeHub:
             })
         return relatorio
 
+    def gerar_relatorio_temperatura_media_termostato(self):
+        termostatos = [d for d in self.dispositivos.values() if d.tipo == TipoDispositivo.TERMOSTATO]
+        temperaturas = list(map(lambda t: t.temperatura, termostatos))
+        if temperaturas:
+            media = sum(temperaturas) / len(temperaturas)
+            return {"temperatura_media": media}
+        return {"temperatura_media": None}
+
+    def gerar_relatorio_tempo_tocando_caixa_som(self):
+        caixas = [d for d in self.dispositivos.values() if d.tipo == TipoDispositivo.CAIXA_SOM]
+        tempos = list(map(lambda c: getattr(c, 'tempo_tocando', 0), caixas))
+        total = sum(tempos)
+        return {"tempo_total_tocando_segundos": total}
+
+    def gerar_relatorio_modos_ar_condicionado(self):
+        from collections import Counter
+        ar_condicionados = [d for d in self.dispositivos.values() if d.tipo == TipoDispositivo.ARCONDICIONADO]
+        modos = list(map(lambda ar: ar.modo.name, ar_condicionados))
+        contagem = Counter(modos)
+        return dict(contagem)
+    
     def gerar_relatorio_dispositivos_mais_usados(self):
         event_counts = {} # {dev_id: count}
 
         for dev_id in self.dispositivos.keys():
             event_counts[dev_id] = 0 # Substituir por contagem real dos logs
 
-        # Exemplo de uso de sorted com lambda
+        #  com lambda
         sorted_devices = sorted(event_counts.items(), key=lambda item: item[1], reverse=True)
         return [{'id_dispositivo': dev_id, 'num_eventos': count} for dev_id, count in sorted_devices]
-
-    # relatorio adicional
