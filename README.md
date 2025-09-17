@@ -150,6 +150,8 @@ saindo...
 ## Rotinas Pré-definidas
 * **modo_noite**: Tranca a porta de entrada, desliga todas as luzes e arma o alarme.
 * **acordar**: Liga a luz do quarto (50% brilho), prepara a cafeteira e abre a persiana.
+* **modo_conforto**: Liga ar condicionado em modo REFRIGERAÇÃO a 22°C, liga caixa de som e toca música ambiente, ajusta termostato para aquecimento a 24°C.
+* **modo_eco**: Desliga ar condicionado e caixa de som, desativa termostato para economia de energia.
 
 ## Padrões de Projeto Utilizados
 

@@ -30,7 +30,14 @@ class EventoDispositivo(Evento):
 @dataclass
 class EventoHub(Evento):
     timestamp: datetime.datetime = field(default_factory=datetime.datetime.now)
-    # Eventos adicionar/remover dispositivo, executar rotina
+    acao: str = ""
+    detalhes: Dict[str, Any] = field(default_factory=dict)
+
     def __post_init__(self):
-        pass
+        self.tipo = "Hub"
+        self.dados = {
+            "acao": self.acao,
+            "detalhes": self.detalhes,
+            "timestamp": self.timestamp
+        }
 

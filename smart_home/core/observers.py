@@ -1,7 +1,6 @@
-# Observer (console/arquivo)
 
 from abc import ABC, abstractmethod
-from eventos import Evento, EventoDispositivo, EventoHub
+from smart_home.core.eventos import Evento, EventoDispositivo, EventoHub
 import json
 
 class Observer(ABC):
@@ -14,7 +13,7 @@ class ConsoleObserver(Observer):
         if isinstance(event, EventoDispositivo):
             print(f"[EVENTO] Dispositivo: {event.id_dispositivo} | Comando: {event.comando} | De: {event.estado_origem} | Para: {event.estado_destino} | Args: {event.args}")
         elif isinstance(event, EventoHub):
-            print(f"[EVENTO] Hub: {event.tipo} | Dados: {event.dados}")
+            print(f"[EVENTO] Hub: {event.tipo} | Dados: {event.detalhes}") # Corrigido para usar event.detalhes
         else:
             print(f"[EVENTO] Generico: {event.tipo} | Dados: {event.dados}")
 

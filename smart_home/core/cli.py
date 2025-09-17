@@ -1,9 +1,8 @@
 import argparse
-from hub import SmartHomeHub
-from persistencia import Persistencia
-from erros import TransicaoInvalida, ValidacaoAtributo, ConfigInvalida
-from smart_home.core.dispositivos import TipoDispositivo, Dispositivo
-
+from smart_home.core.hub import SmartHomeHub
+from .persistencia import Persistencia
+from .erros import TransicaoInvalida, ValidacaoAtributo, ConfigInvalida
+from smart_home.dispositivos import Dispositivo, TipoDispositivo, ValidacaoAtributo
 class CLI:
     def __init__(self, config_path):
         self.persistencia = Persistencia(config_path)
@@ -154,17 +153,25 @@ class CLI:
                 for item in relatorio:
                     print(f"ID: {item['id_dispositivo']}, Tempo Ligado: {item['tempo_total_horas']:.2f} horas")
             elif opcao == '3':
+                relatorio = self.hub.gerar_relatorio_tempo_tocando_caixa_som()
                 print("\n--- Relatorio de Tempo de Caixa de Som ---")
                 for item in relatorio:
                     print(f"ID: {item['id_dispositivo']}, Tempo Ligado: {item['tempo_total_horas']:.2f} horas")
             elif opcao == '4':
-                print("\n--- Relatorio de Tempo de Ar condicionado ---")
-                for item in relatorio:
-                    print(f"ID: {item['id_dispositivo']}, Tempo Ligado: {item['tempo_total_horas']:.2f} horas")
+                relatorio = self.hub.gerar_relatorio_modos_ar_condicionado()
+                print("\n---  Relatorio de Modos de Ar Condicionado ---")
+                if relatorio:
+                    for modo, count in relatorio.items():
+                        print(f"Modo: {modo}, Usos: {count}")
+                else:
+                    print("Nenhum dado de modos de ar condicionado encontrado.")
             elif opcao == '5':
-                print("\n--- Relatorio de Termostato ---")
-                for item in relatorio:
-                    print(f"ID: {item['id_dispositivo']}, Tempo Ligado: {item['tempo_total_horas']:.2f} horas")
+                relatorio = self.hub.gerar_relatorio_temperatura_media_termostato()
+                print("\n--- Relatorio de Temperatura Media de Termostato ---")
+                if relatorio['temperatura_media'] is not None:
+                    print(f"Temperatura Média: {relatorio['temperatura_media']:.2f}°C")
+                else:
+                    print("Nenhum termostato encontrado ou dados de temperatura.")
             elif opcao == '6':
                 relatorio = self.hub.gerar_relatorio_dispositivos_mais_usados()
                 print("\n--- Relatorio de Dispositivos Mais Usados ---")
